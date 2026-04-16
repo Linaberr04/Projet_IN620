@@ -160,5 +160,6 @@ def Configuration_Machine(machine,entrée):
         if retour is None:
             return "REJETER"
 
-# Question 6 :
+
+    
         
