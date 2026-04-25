@@ -79,6 +79,11 @@ def main():
 
         retour = Execution_complete(machine,mot)
         print(retour)
+    
+    if question == "q7":
+        nom_fichier = "test.txt"
+        retour = Codage(nom_fichier)
+        print(retour)
 
     if question == "q8_1":
         nom_fichier = "test.txt"
@@ -95,6 +100,14 @@ def main():
         sortie = Machine_Turing(nom_fichier,entree)
 
         print("Sortie : ", sortie)
+    
+    if question == "q10":
+        code = "0|0|1|>|0|0|1|0|>|0|0|□|□|-|1#000#2"
+        M = Machine_Turing_Universelle_Compteur(code)
+        print(M)
+
+
+
 
 
 
