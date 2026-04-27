@@ -13,14 +13,6 @@ class MT:
         self.transitions = transitions # Dictionnaire { (etat courant , indice du symbole lu) : (etat suivant,)}
         self.configuration = None # Pour Q3
 
-class MT_Uni:
-    def __init__(self,dic_etat,cpt,resultat):
-        self.dic_etat = {}
-        self.cpt = 2
-        self.resultat = []
-
-
-
 
 # Q2 Partie 1
 def charge_fichier(fichier):
@@ -169,7 +161,7 @@ def Configuration_Machine(machine,entrée):
 
 # Question 7
         
-def Codage(fichier):
+def Codage_Machine(fichier):
     dic_etat = {} # on attribut pour chaque état de la MT un entier à partir du cpt
     cpt = 2
     resultat = [] #tableau qui regroupe toutes les transitions de la MT
@@ -251,25 +243,28 @@ def Codage_Binaire(fichier):
 
 # Question 9’
 
-def Machine_Turing(fichier,entree):
 
-    ruban1 = Codage(fichier)
-    ruban2 = list(entree) # entree est une chaine de caractère, on utilise une liste pour pouvoir la modifier
+def Machine_Turing(entree): # entrée qui aura la forme < M > #x
+    
+    Parsing = entree.split("#")
+
+    ruban1 = Parsing[0].split('|') # on crée un tableau à partir du ruban 1 pour pouvoir parcourir le ruban
+    ruban2 = list(Parsing[1])  # entree est une chaine de caractère, on utilise une liste pour pouvoir la modifier
     etat_actuel = "0" # ruban 3
     cpt_ruban2 = 0
-    tbl_ruban1 = ruban1.split('|') # on crée un tableau à partir du ruban 1 pour pouvoir parcourir le ruban
 
-    transition_trouvee = False
 
     while etat_actuel != "1" :
+
+        transition_trouvee = False
         
         symbole_lu = ruban2[cpt_ruban2]
 
-        for i in range(0,len(tbl_ruban1),5):
-            if tbl_ruban1[i] == etat_actuel and tbl_ruban1[i+1] == symbole_lu:
-                ecrit = tbl_ruban1[i+2]
-                direction = tbl_ruban1[i+3]
-                etat_suivant = tbl_ruban1[i+4]
+        for i in range(0,len(ruban1),5):
+            if ruban1[i] == etat_actuel and ruban1[i+1] == symbole_lu:
+                ecrit = ruban1[i+2]
+                direction = ruban1[i+3]
+                etat_suivant = ruban1[i+4]
                 transition_trouvee = True
                 break
 
@@ -289,9 +284,12 @@ def Machine_Turing(fichier,entree):
                 ruban2.insert(0, "□")
                 cpt_ruban2 = 0
 
-        etat_actuel = etat_suivant
+        etat_actuel = etat_suivant # Mise à jour du ruban 3
     
     return "".join(ruban2)
+
+
+# Question 10
 
 
 # Question 10
@@ -324,7 +322,6 @@ def Machine_Turing_Universelle_Compteur(chaine): # Format de l'entrée serait : 
                 # Récupération de ce qui doit être ecrits et le mouvement de la tête
                 ecrit = M_Ruban1[i+2]
                 direction = M_Ruban1[i+3]
-
                 etat_actuel = M_Ruban1[i+4] # Mise à jour de l'état courant par l'état suivant 
                 transition_trouvee = True 
 

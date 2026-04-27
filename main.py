@@ -65,7 +65,7 @@ def main():
         print()
 
     if question == "q6_1":
-        nom_fichier = "fonction1.txt"
+        nom_fichier = "MT1.txt"
         mot = "10#100"
         machine = charge_fichier(nom_fichier) 
 
@@ -73,8 +73,16 @@ def main():
         print(retour)
 
     if question == "q6_2":
-        nom_fichier = "fonction2.txt"
-        mot = "10#100#10"
+        nom_fichier = "MT2.txt"
+        mot = "1000#100#10#1000"
+        machine = charge_fichier(nom_fichier) 
+
+        retour = Execution_complete(machine,mot)
+        print(retour)
+
+    if question == "q6_3":
+        nom_fichier = "MT3.txt"
+        mot = "11#111"
         machine = charge_fichier(nom_fichier) 
 
         retour = Execution_complete(machine,mot)
@@ -94,10 +102,14 @@ def main():
         print("Interprétation entier : ", entier )
 
     if question == "q9":
+        # MT qui change les 0 en 1 et les 1 en 0
         nom_fichier = "test_q9.txt"
-        entree = "110011"
+        x = "110011"
+        codage = Codage_Machine(nom_fichier)
 
-        sortie = Machine_Turing(nom_fichier,entree)
+        entree = codage + "#" + x
+
+        sortie = Machine_Turing(entree)
 
         print("Sortie : ", sortie)
     
