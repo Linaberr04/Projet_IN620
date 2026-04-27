@@ -241,7 +241,7 @@ def Codage_Binaire(fichier):
 
     return codage,chaine_binaire,valeur_entiere
 
-# Question 9
+# Question 9’
 
 
 def Machine_Turing(entree): # entrée qui aura la forme < M > #x
@@ -289,6 +289,7 @@ def Machine_Turing(entree): # entrée qui aura la forme < M > #x
     return "".join(ruban2)
 
 
+# Question 10
 
 
 # Question 10
@@ -321,7 +322,6 @@ def Machine_Turing_Universelle_Compteur(chaine): # Format de l'entrée serait : 
                 # Récupération de ce qui doit être ecrits et le mouvement de la tête
                 ecrit = M_Ruban1[i+2]
                 direction = M_Ruban1[i+3]
-
                 etat_actuel = M_Ruban1[i+4] # Mise à jour de l'état courant par l'état suivant 
                 transition_trouvee = True 
 
@@ -350,14 +350,6 @@ def Machine_Turing_Universelle_Compteur(chaine): # Format de l'entrée serait : 
     
     return "".join(x_Ruban2)
 
-
-
-                   
-
-
-            
-
-        
 
 
 
