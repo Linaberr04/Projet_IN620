@@ -1,4 +1,4 @@
-all: q1 q2 q3 q4 q5 q6 q9 q7 q8_1 q10
+all: q1 q2 q3 q4 q5 q6 q9 q7 q8_1 q10 q11
 
 q1:
 	python3 main.py q1
@@ -20,3 +20,6 @@ q9:
 
 q10:
 	python3 main.py q10
+
+q11:
+	python3 main.py q11
