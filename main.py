@@ -115,6 +115,34 @@ def main():
 
         print(ruban_resultat)
 
+    if question == "q10":
+        code = "0|0|1|>|0|0|1|0|>|0|0|□|□|-|1#000#2"
+        M = Machine_Turing_Universelle_Compteur(code)
+        print(M)
+
+        entree_MTU = "0|0|1|>|0|0|1|0|>|0|0|□|□|-|1#000#2"
+        code = "0|0|1|>|0|0|1|0|>|0|0|□|□|-|1"
+        entree = "000"
+        M = Machine_Turing_Universelle_Compteur(entree_MTU)
+        n = 2
+
+        print(f"\n L'entrée donné à MTU est : {entree_MTU} (inverse 0 et 1) \n <M> : {code} \n w = {entree} \n nombre d'etapes = {n} ")
+        print(f"\n Sortie : {M}")
+
+
+    if question == "q11":
+        print("\nLangage L1")
+        print("L1 = { <M>#n | M s'arrête sur n en moins de n étapes }")
+        print("Réponse : décidable \n")
+
+        print("Langage L2")
+        print("L2 = { <M>#n | M s'arrête sur les mots de taille n } ")
+        print("Réponse : indécidable \n")
+
+        print("Langage L3")
+        print("L3 = { <M>#x#y | M calcule la même chose sur les entrées x et y }")
+        print("Réponse : indécidable \n")
+
 
 
 
