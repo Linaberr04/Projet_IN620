@@ -86,7 +86,10 @@ def main():
         machine = charge_fichier(nom_fichier) 
 
         retour = Execution_complete(machine,mot)
-        print(retour)
+
+        ruban_resultat = retour.rubans[2]
+
+        print("Résultat :", "".join(ruban_resultat).strip("_"))
 
     if question == "q8_1":
         nom_fichier = "test.txt"

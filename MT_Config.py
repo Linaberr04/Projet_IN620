@@ -137,7 +137,9 @@ def Execution_complete(machine,entrée):
 
     while True: 
         if machine.configuration.state == machine.F:
-            return "ACCEPTER"
+            print("ACCEPTER")
+            return machine.configuration 
+        
         retour = Un_pas_de_Calcul(machine)
         
 
