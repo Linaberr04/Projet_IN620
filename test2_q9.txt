@@ -1,0 +1,23 @@
+// Incrémentation binaire
+
+init: q0
+accept: Stop
+
+q0,0
+q0,0,>
+
+q0,1
+q0,1,>
+
+q0,_
+q1,_,<
+
+q1,1
+q1,0,<
+
+q1,0
+Stop,1,-
+
+q1,_
+Stop,1,-
+

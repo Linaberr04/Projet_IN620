@@ -107,6 +107,64 @@ def main():
         codage = Codage_Machine(nom_fichier_uni)
 
         entree = codage + "#" + x
+        print(entree)
+        machine = charge_fichier(nom_fichier) 
+
+        config_finale = Execution_complete(machine,entree)
+
+        ruban_1 = config_finale.rubans[0]
+        ruban_resultat = config_finale.rubans[1]
+
+        print(ruban_resultat)
+        print(ruban_1)
+
+    if question == "q9_2":
+        # MT qui change les 0 en 1 et les 1 en 0
+        nom_fichier_uni = "test2_q9.txt"
+        nom_fichier = "MT_question9.txt"
+        x = "1011"
+        codage = Codage_Machine(nom_fichier_uni)
+
+        entree = codage + "#" + x
+        print(entree)
+        machine = charge_fichier(nom_fichier) 
+
+        config_finale = Execution_complete(machine,entree)
+
+        ruban_1 = config_finale.rubans[0]
+        ruban_resultat = config_finale.rubans[1]
+
+        print(ruban_resultat)
+        print(ruban_1)
+
+    if question == "q9_3":
+        # MT qui change les 0 en 1 et les 1 en 0
+        nom_fichier_uni = "test3_q9.txt"
+        nom_fichier = "MT_question9.txt"
+        x = "001"
+        codage = Codage_Machine(nom_fichier_uni)
+
+        entree = codage + "#" + x
+        print(entree)
+        machine = charge_fichier(nom_fichier) 
+
+        config_finale = Execution_complete(machine,entree)
+
+        print(codage)
+
+        ruban_resultat = config_finale.rubans[1]
+
+        print(ruban_resultat)
+    
+
+    if question == "q10":
+        nom_fichier_uni = "test2_q9.txt"
+        nom_fichier = "MT_question10.txt"
+        x = "0011"
+        codage = Codage_Machine(nom_fichier_uni)
+
+        entree = codage + "#" + x + "#" +  "11111"
+        print(entree)
         machine = charge_fichier(nom_fichier) 
 
         config_finale = Execution_complete(machine,entree)
@@ -114,20 +172,6 @@ def main():
         ruban_resultat = config_finale.rubans[1]
 
         print(ruban_resultat)
-
-    if question == "q10":
-        code = "0|0|1|>|0|0|1|0|>|0|0|□|□|-|1#000#2"
-        M = Machine_Turing_Universelle_Compteur(code)
-        print(M)
-
-        entree_MTU = "0|0|1|>|0|0|1|0|>|0|0|□|□|-|1#000#2"
-        code = "0|0|1|>|0|0|1|0|>|0|0|□|□|-|1"
-        entree = "000"
-        M = Machine_Turing_Universelle_Compteur(entree_MTU)
-        n = 2
-
-        print(f"\n L'entrée donné à MTU est : {entree_MTU} (inverse 0 et 1) \n <M> : {code} \n w = {entree} \n nombre d'etapes = {n} ")
-        print(f"\n Sortie : {M}")
 
 
     if question == "q11":

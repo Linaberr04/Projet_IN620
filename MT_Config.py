@@ -41,7 +41,7 @@ def charge_fichier(fichier):
         
             elif ',' in ligne: 
                 # Ligne 1
-                parts_L1 = ligne.split(',')
+                parts_L1 = [p.strip() for p in ligne.split(',')]
                 etat_courant = parts_L1[0]
                 symboles_lus = tuple(parts_L1[1:]) # Prend tous sauf le premier élement de parts_L1
             
@@ -50,7 +50,7 @@ def charge_fichier(fichier):
                 # Ligne 2
                 i += 1 
                 ligne = lignes[i]
-                parts_L2 = ligne.split(',')
+                parts_L2 = [p.strip() for p in ligne.split(',')]
                 etat_suivant = parts_L2[0]
                 symboles_ecrit = tuple(parts_L2[1: 1 + nb_rubans])
                 mouvements = tuple(parts_L2[1 + nb_rubans: 1 + 2 * nb_rubans])
@@ -135,12 +135,25 @@ def Execution_complete(machine,entrée):
 
     Configuration_Initiale(machine,entrée)
 
+    tour = 0
+
+
     while True: 
         if machine.configuration.state == machine.F:
             print("ACCEPTER")
-            return machine.configuration 
+            return machine.configuration
+        
+        if machine.configuration.state == "q_compteur":
+            pos4 = machine.configuration.tete[3]
+
+            if machine.configuration.rubans[3][pos4] == "1":
+                tour += 1
+                print("Tour", tour)
         
         retour = Un_pas_de_Calcul(machine)
+        if retour is None: 
+            print(f"BLOQUÉ à l'état : {machine.configuration.state}")
+            return machine.configuration
         
 
 
@@ -188,6 +201,9 @@ def Codage_Machine(fichier):
                 etat_courant = parts_L1[0].strip()
                 symbole_lu = parts_L1[1].strip()
 
+                if symbole_lu == "_":
+                    symbole_lu = "□"
+
                 
                 # Ajout dans le dictionnaire état Ligne 1
                 if etat_courant not in dic_etat:
@@ -203,6 +219,9 @@ def Codage_Machine(fichier):
                 etat_suivant = parts_L2[0].strip()
                 symbole_ecrit = parts_L2[1].strip()
                 direction = parts_L2[2].strip()
+
+                if symbole_ecrit == "_":
+                    symbole_ecrit = "□"
     
 
                 if etat_suivant not in dic_etat:
@@ -275,11 +294,11 @@ def Machine_Turing(entree): # entrée qui aura la forme < M > #x
         if direction == ">":
             cpt_ruban2 += 1
             if cpt_ruban2 == len(ruban2):
-                ruban2.append("□")
+                ruban2.append("_")
         if direction == "<":
             cpt_ruban2 -= 1
             if cpt_ruban2 < 0 :
-                ruban2.insert(0, "□")
+                ruban2.insert(0, "_")
                 cpt_ruban2 = 0
 
         etat_actuel = etat_suivant # Mise à jour du ruban 3
@@ -330,12 +349,12 @@ def Machine_Turing_Universelle_Compteur(chaine): # Format de l'entrée serait : 
                 if direction == ">":
                     position_tete_lecture += 1
                     if position_tete_lecture == len(x_Ruban2):
-                        x_Ruban2.append("□")
+                        x_Ruban2.append("_")
             
                 if direction == "<":
                     position_tete_lecture -= 1
                     if position_tete_lecture < 0 :
-                        x_Ruban2.insert(0, "□")
+                        x_Ruban2.insert(0, "_")
                         position_tete_lecture = 0
                 break
             
